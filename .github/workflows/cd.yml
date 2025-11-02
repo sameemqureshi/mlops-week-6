@@ -57,6 +57,7 @@ jobs:
           
           sed -i "s|gcr.io/\[YOUR_GCP_PROJECT_ID\]/iris-api:latest|${FULL_IMAGE_PATH}|g" kubernetes/deployment.yaml
 
+          kubectl delete deployment demo-iris-workload --ignore-not-found
           kubectl apply -f kubernetes/deployment.yaml
           kubectl apply -f kubernetes/service.yaml
           echo "Waiting for deployment rollout to complete..."
